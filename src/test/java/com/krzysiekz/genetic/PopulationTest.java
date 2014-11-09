@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
 public class PopulationTest {
-
     private static final int NUMBER_OF_INDIVIDUALS = 10;
     private static final int NUMBER_OF_GENES = 20;
 

@@ -3,7 +3,6 @@ package com.krzysiekz.genetic.fitness.impl;
 import com.krzysiekz.genetic.GenesToValueInRangeCalculator;
 import com.krzysiekz.genetic.Individual;
 import com.krzysiekz.genetic.fitness.FitnessFunction;
-import com.krzysiekz.genetic.fitness.impl.DefaultFitnessFunction;
 import org.junit.Before;
 import org.junit.Test;
 

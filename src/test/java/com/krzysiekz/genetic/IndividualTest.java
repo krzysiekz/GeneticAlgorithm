@@ -39,6 +39,5 @@ public class IndividualTest {
         spy.initializeGenes();
         //then
         verify(spy, times(NUMBER_OF_GENES)).getRandomGen();
-
     }
 }
