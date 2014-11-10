@@ -1,5 +1,7 @@
 package com.krzysiekz.genetic;
 
+import com.krzysiekz.genetic.fitness.FitnessFunction;
+
 public class Population {
     private final Individual[] individuals;
 
@@ -19,7 +21,30 @@ public class Population {
         }
     }
 
+    public Population(int numberOfIndividuals) {
+        individuals = new Individual[numberOfIndividuals];
+    }
+
     public Individual[] getIndividuals() {
         return individuals;
+    }
+
+    public void calculateFitnessForIndividuals(FitnessFunction fitnessFunction,
+                                               GenesToValueInRangeCalculator calculator) {
+        for(Individual individual : individuals) {
+            individual.calculateFitness(fitnessFunction, calculator);
+        }
+    }
+
+    public Double getTotalFitness() {
+        Double totalFitness = 0.0;
+        for(Individual individual : individuals) {
+            totalFitness += individual.getFitness();
+        }
+        return totalFitness;
+    }
+
+    public void setIndividual(int index, Individual individual) {
+        individuals[index] = individual;
     }
 }

@@ -1,9 +1,12 @@
 package com.krzysiekz.genetic;
 
+import com.krzysiekz.genetic.fitness.FitnessFunction;
+
 public class Individual {
 
     private static final int DEFAULT_NUMBER_OF_GENES = 64;
     private final byte[] genes;
+    private Double fitness;
 
     public Individual(int numberOfGenes) {
         genes = new byte[numberOfGenes];
@@ -25,5 +28,13 @@ public class Individual {
 
     byte getRandomGenValue() {
         return (byte) Math.round(Math.random());
+    }
+
+    public void calculateFitness(FitnessFunction fitnessFunction, GenesToValueInRangeCalculator calculator) {
+        fitness = fitnessFunction.calculate(this, calculator);
+    }
+
+    public Double getFitness() {
+        return fitness;
     }
 }

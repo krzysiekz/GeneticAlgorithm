@@ -1,11 +1,12 @@
 package com.krzysiekz.genetic;
 
+import com.krzysiekz.genetic.fitness.FitnessFunction;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.*;
 
 public class IndividualTest {
 
@@ -39,5 +40,21 @@ public class IndividualTest {
         spy.initializeGenes();
         //then
         verify(spy, times(NUMBER_OF_GENES)).getRandomGenValue();
+    }
+
+    @Test
+    public void shouldCalculateItsFitness() {
+        //given
+        GenesToValueInRangeCalculator calculator = mock(GenesToValueInRangeCalculator.class);
+        FitnessFunction fitnessFunction = mock(FitnessFunction.class);
+        Individual individual = new Individual();
+        //when
+        when(fitnessFunction.calculate(any(Individual.class),
+                any(GenesToValueInRangeCalculator.class))).thenReturn(5.0);
+        individual.calculateFitness(fitnessFunction, calculator);
+        //then
+        verify(fitnessFunction).calculate(any(Individual.class),
+                any(GenesToValueInRangeCalculator.class));
+        assertThat(individual.getFitness()).isEqualTo(5.0);
     }
 }
