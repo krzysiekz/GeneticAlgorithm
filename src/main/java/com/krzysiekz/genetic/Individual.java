@@ -19,11 +19,11 @@ public class Individual {
 
     public void initializeGenes() {
         for (int i = 0; i < genes.length; i++) {
-            genes[i] = getRandomGen();
+            genes[i] = getRandomGenValue();
         }
     }
 
-    byte getRandomGen() {
+    byte getRandomGenValue() {
         return (byte) Math.round(Math.random());
     }
 }

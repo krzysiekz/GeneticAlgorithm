@@ -38,6 +38,6 @@ public class IndividualTest {
         //when
         spy.initializeGenes();
         //then
-        verify(spy, times(NUMBER_OF_GENES)).getRandomGen();
+        verify(spy, times(NUMBER_OF_GENES)).getRandomGenValue();
     }
 }
