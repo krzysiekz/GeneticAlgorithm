@@ -9,8 +9,8 @@ import static org.mockito.Mockito.when;
 
 public class GenesToValueInRangeCalculatorTest {
 
-    public static final double MIN_RANGE = 0.5;
-    public static final double MAX_RANGE = 2.5;
+    private static final double MIN_RANGE = 0.5;
+    private static final double MAX_RANGE = 2.5;
 
     @Test
     public void shouldCalculateProperValueForMinimumRange() {

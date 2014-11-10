@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class RouletteSelectionAlgorithm implements SelectionAlgorithm {
 
-    private Map<Integer, Double> individualsProbability = new HashMap<>();
-    private Map<Integer, Double> individualsDistribution = new HashMap<>();
+    private final Map<Integer, Double> individualsProbability = new HashMap<>();
+    private final Map<Integer, Double> individualsDistribution = new HashMap<>();
 
     @Override
     public Population createNewPopulation(Population population) {

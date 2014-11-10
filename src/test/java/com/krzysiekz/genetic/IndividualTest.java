@@ -57,4 +57,15 @@ public class IndividualTest {
                 any(GenesToValueInRangeCalculator.class));
         assertThat(individual.getFitness()).isEqualTo(5.0);
     }
+
+    @Test
+    public void shouldSetGeneOnIndividual() {
+        //given
+        Individual individual = new Individual();
+        //when
+        individual.initializeGenes();
+        individual.setGene(1, (byte) 0);
+        //then
+        assertThat(individual.getGene(1)).isEqualTo((byte)0);
+    }
 }

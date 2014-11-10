@@ -13,7 +13,6 @@ public class TournamentSelectionAlgorithmTest {
     @Test
     public void shouldCreateNewPopulation() {
         //given
-        //given
         Individual individualA = mock(Individual.class);
         Individual individualB = mock(Individual.class);
         Population population = mock(Population.class);
@@ -21,7 +20,6 @@ public class TournamentSelectionAlgorithmTest {
         //when
         when(individualA.getFitness()).thenReturn(1.0);
         when(individualB.getFitness()).thenReturn(2.0);
-        when(population.getTotalFitness()).thenReturn(3.0);
         when(population.getIndividuals()).thenReturn(new Individual[]{individualA, individualB});
         Population newPopulation = selectionAlgorithm.createNewPopulation(population);
         //then

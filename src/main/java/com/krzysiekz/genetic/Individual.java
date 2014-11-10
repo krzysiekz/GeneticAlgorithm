@@ -5,7 +5,7 @@ import com.krzysiekz.genetic.fitness.FitnessFunction;
 public class Individual {
 
     private static final int DEFAULT_NUMBER_OF_GENES = 64;
-    private final byte[] genes;
+    private byte[] genes;
     private Double fitness;
 
     public Individual(int numberOfGenes) {
@@ -36,5 +36,17 @@ public class Individual {
 
     public Double getFitness() {
         return fitness;
+    }
+
+    public void setGenes(byte[] genes) {
+        this.genes = genes;
+    }
+
+    public void setGene(int index, byte geneValue) {
+        genes[index] = geneValue;
+    }
+
+    public byte getGene(int index) {
+        return genes[index];
     }
 }
