@@ -45,16 +45,16 @@ public class IndividualTest {
     @Test
     public void shouldCalculateItsFitness() {
         //given
-        GenesToValueInRangeCalculator calculator = mock(GenesToValueInRangeCalculator.class);
+        GenesToValueCalculator calculator = mock(GenesToValueCalculator.class);
         FitnessFunction fitnessFunction = mock(FitnessFunction.class);
         Individual individual = new Individual();
         //when
         when(fitnessFunction.calculate(any(Individual.class),
-                any(GenesToValueInRangeCalculator.class))).thenReturn(5.0);
+                any(GenesToValueCalculator.class))).thenReturn(5.0);
         individual.calculateFitness(fitnessFunction, calculator);
         //then
         verify(fitnessFunction).calculate(any(Individual.class),
-                any(GenesToValueInRangeCalculator.class));
+                any(GenesToValueCalculator.class));
         assertThat(individual.getFitness()).isEqualTo(5.0);
     }
 
@@ -67,5 +67,15 @@ public class IndividualTest {
         individual.setGene(1, (byte) 0);
         //then
         assertThat(individual.getGene(1)).isEqualTo((byte)0);
+    }
+
+    @Test
+    public void shouldCreateCopy() {
+        //given
+        Individual individual = new Individual();
+        //when
+        Individual copy = new Individual(individual);
+        //then
+        assertThat(copy).isInstanceOf(Individual.class).isNotSameAs(individual);
     }
 }

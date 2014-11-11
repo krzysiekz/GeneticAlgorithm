@@ -1,6 +1,6 @@
 package com.krzysiekz.genetic.fitness.impl;
 
-import com.krzysiekz.genetic.GenesToValueInRangeCalculator;
+import com.krzysiekz.genetic.GenesToValueCalculator;
 import com.krzysiekz.genetic.Individual;
 import com.krzysiekz.genetic.fitness.FitnessFunction;
 import org.junit.Before;
@@ -15,12 +15,12 @@ public class DefaultFitnessFunctionTest {
 
     private Individual individual;
     private FitnessFunction fitnessFunction;
-    private GenesToValueInRangeCalculator converter;
+    private GenesToValueCalculator converter;
 
     @Before
     public void setUp() {
         individual = mock(Individual.class);
-        converter = mock(GenesToValueInRangeCalculator.class);
+        converter = mock(GenesToValueCalculator.class);
         fitnessFunction = new DefaultFitnessFunction();
     }
 

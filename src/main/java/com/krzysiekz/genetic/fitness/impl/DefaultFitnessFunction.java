@@ -1,13 +1,13 @@
 package com.krzysiekz.genetic.fitness.impl;
 
-import com.krzysiekz.genetic.GenesToValueInRangeCalculator;
+import com.krzysiekz.genetic.GenesToValueCalculator;
 import com.krzysiekz.genetic.Individual;
 import com.krzysiekz.genetic.fitness.FitnessFunction;
 
 public class DefaultFitnessFunction implements FitnessFunction {
 
     @Override
-    public Double calculate(Individual individual, GenesToValueInRangeCalculator converter) {
+    public Double calculate(Individual individual, GenesToValueCalculator converter) {
         double genesValue = converter.convert(individual);
         return calculateFitnessFunctionValue(genesValue);
      }

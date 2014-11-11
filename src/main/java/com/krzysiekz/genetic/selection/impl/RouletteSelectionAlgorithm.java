@@ -20,7 +20,7 @@ public class RouletteSelectionAlgorithm implements SelectionAlgorithm {
         for (int i = 0; i < population.getIndividuals().length; i++) {
             Double randomValue = Math.random();
             int index = findIndividual(randomValue);
-            newPopulation.setIndividual(i, population.getIndividuals()[index]);
+            newPopulation.setIndividual(i, new Individual(population.getIndividuals()[index]));
         }
         return newPopulation;
     }

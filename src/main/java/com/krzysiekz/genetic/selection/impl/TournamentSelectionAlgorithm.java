@@ -15,7 +15,7 @@ public class TournamentSelectionAlgorithm implements SelectionAlgorithm {
     public Population createNewPopulation(Population population) {
         Population newPopulation = new Population(population.getIndividuals().length);
         for (int i = 0; i < population.getIndividuals().length; i++) {
-            newPopulation.setIndividual(i, getIndividualFromTournament(population));
+            newPopulation.setIndividual(i, new Individual(getIndividualFromTournament(population)));
         }
         return newPopulation;
     }

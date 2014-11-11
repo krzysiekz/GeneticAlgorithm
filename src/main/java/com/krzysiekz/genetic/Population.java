@@ -30,7 +30,7 @@ public class Population {
     }
 
     public void calculateFitnessForIndividuals(FitnessFunction fitnessFunction,
-                                               GenesToValueInRangeCalculator calculator) {
+                                               GenesToValueCalculator calculator) {
         for(Individual individual : individuals) {
             individual.calculateFitness(fitnessFunction, calculator);
         }
@@ -46,5 +46,15 @@ public class Population {
 
     public void setIndividual(int index, Individual individual) {
         individuals[index] = individual;
+    }
+
+    public double getBestFitness() {
+        double max = individuals[0].getFitness();
+        for (Individual individual : individuals) {
+            if(individual.getFitness() > max) {
+                max = individual.getFitness();
+            }
+        }
+        return max;
     }
 }

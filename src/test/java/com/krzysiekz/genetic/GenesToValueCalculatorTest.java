@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.offset;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class GenesToValueInRangeCalculatorTest {
+public class GenesToValueCalculatorTest {
 
     private static final double MIN_RANGE = 0.5;
     private static final double MAX_RANGE = 2.5;
@@ -16,7 +16,7 @@ public class GenesToValueInRangeCalculatorTest {
     public void shouldCalculateProperValueForMinimumRange() {
         //given
         Individual individual = mock(Individual.class);
-        GenesToValueInRangeCalculator converter = new GenesToValueInRangeCalculator(MIN_RANGE, MAX_RANGE);
+        GenesToValueCalculator converter = new GenesToValueCalculator(MIN_RANGE, MAX_RANGE);
         //when
         when(individual.getGenes()).thenReturn(new byte[]{0,0,0,0});
         Double value = converter.convert(individual);
@@ -28,7 +28,7 @@ public class GenesToValueInRangeCalculatorTest {
     public void shouldCalculateProperValueForMaximumRange() {
         //given
         Individual individual = mock(Individual.class);
-        GenesToValueInRangeCalculator converter = new GenesToValueInRangeCalculator(MIN_RANGE, MAX_RANGE);
+        GenesToValueCalculator converter = new GenesToValueCalculator(MIN_RANGE, MAX_RANGE);
         //when
         when(individual.getGenes()).thenReturn(new byte[]{1,1,1,1});
         Double value = converter.convert(individual);

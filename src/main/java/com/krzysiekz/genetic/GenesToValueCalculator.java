@@ -2,11 +2,11 @@ package com.krzysiekz.genetic;
 
 import java.math.BigInteger;
 
-public class GenesToValueInRangeCalculator {
+public class GenesToValueCalculator {
     private final double minRange;
     private final double maxRange;
 
-    public GenesToValueInRangeCalculator(double minRange, double maxRange) {
+    public GenesToValueCalculator(double minRange, double maxRange) {
         this.minRange = minRange;
         this.maxRange = maxRange;
     }

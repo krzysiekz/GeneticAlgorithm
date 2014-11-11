@@ -62,7 +62,7 @@ public class PopulationTest {
     @Test
     public void shouldCalculateFitnessForAllIndividuals() {
         //given
-        GenesToValueInRangeCalculator calculator = mock(GenesToValueInRangeCalculator.class);
+        GenesToValueCalculator calculator = mock(GenesToValueCalculator.class);
         FitnessFunction fitnessFunction = mock(FitnessFunction.class);
         //when
         when(individualCreator.create()).thenReturn(individual);
@@ -91,5 +91,17 @@ public class PopulationTest {
         population.setIndividual(1, individual);
         //then
         assertThat(population.getIndividuals()[1]).isEqualTo(individual);
+    }
+
+    @Test
+    public void shouldGetBestFitness() {
+        //given
+        when(individual.getFitness()).thenReturn(5.0);
+        when(individualCreator.create()).thenReturn(individual);
+        //when
+        Population population = new Population(individualCreator, NUMBER_OF_INDIVIDUALS);
+        double bestFitness = population.getBestFitness();
+        //then
+        assertThat(bestFitness).isEqualTo(5.0, offset(0.001));
     }
 }
