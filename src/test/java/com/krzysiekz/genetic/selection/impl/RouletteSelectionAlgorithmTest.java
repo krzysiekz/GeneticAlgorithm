@@ -19,6 +19,8 @@ public class RouletteSelectionAlgorithmTest {
         Population population = mock(Population.class);
         SelectionAlgorithm selectionAlgorithm = new RouletteSelectionAlgorithm();
         //when
+        when(individualA.getGenes()).thenReturn(new byte[]{1,1,1,1});
+        when(individualB.getGenes()).thenReturn(new byte[]{1,1,1,1});
         when(individualA.getFitness()).thenReturn(1.0);
         when(individualB.getFitness()).thenReturn(2.0);
         when(population.getTotalFitness()).thenReturn(3.0);

@@ -18,6 +18,8 @@ public class TournamentSelectionAlgorithmTest {
         Population population = mock(Population.class);
         SelectionAlgorithm selectionAlgorithm = new TournamentSelectionAlgorithm(2);
         //when
+        when(individualA.getGenes()).thenReturn(new byte[]{1,1,1,1});
+        when(individualB.getGenes()).thenReturn(new byte[]{1,1,1,1});
         when(individualA.getFitness()).thenReturn(1.0);
         when(individualB.getFitness()).thenReturn(2.0);
         when(population.getIndividuals()).thenReturn(new Individual[]{individualA, individualB});
