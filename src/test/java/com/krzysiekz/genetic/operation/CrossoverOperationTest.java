@@ -15,11 +15,11 @@ public class CrossoverOperationTest {
 
         Individual individualB = new Individual(4);
         individualB.setGenes(new byte[]{0,0,0,0});
-        CrossoverOperation operation = new CrossoverOperation(2);
+        CrossoverOperation operation = new CrossoverOperation(12345l);
         //when
         operation.apply(individualA, individualB);
         //then
-        assertThat(individualA.getGenes()).isEqualTo(new byte[]{1,1,0,0});
-        assertThat(individualB.getGenes()).isEqualTo(new byte[]{0,0,1,1});
+        assertThat(individualA.getGenes()).isEqualTo(new byte[]{1,0,0,0});
+        assertThat(individualB.getGenes()).isEqualTo(new byte[]{0,1,1,1});
     }
 }

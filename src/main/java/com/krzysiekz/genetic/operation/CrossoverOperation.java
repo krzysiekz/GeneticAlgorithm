@@ -2,26 +2,26 @@ package com.krzysiekz.genetic.operation;
 
 import com.krzysiekz.genetic.Individual;
 
+import java.util.Random;
+
 public class CrossoverOperation {
 
-    private int crossoverPoint = 0;
+    private Random random;
 
-    public CrossoverOperation(int crossoverPoint) {
-        this.crossoverPoint = crossoverPoint;
+    public CrossoverOperation(long seed) {
+        random = new Random(seed);
+    }
+
+    public CrossoverOperation() {
+        random = new Random();
     }
 
     public void apply(Individual individualA, Individual individualB) {
-        setCrossoverPointIfNeeded(individualA);
+        int crossoverPoint = random.nextInt(individualA.getGenes().length);
         for (int i = crossoverPoint; i < individualA.getGenes().length; i++) {
             byte temporary = individualA.getGene(i);
             individualA.setGene(i, individualB.getGene(i));
             individualB.setGene(i, temporary);
-        }
-    }
-
-    private void setCrossoverPointIfNeeded(Individual individualA) {
-        if(crossoverPoint == 0){
-            crossoverPoint = (int) (Math.random() * individualA.getGenes().length);
         }
     }
 }
