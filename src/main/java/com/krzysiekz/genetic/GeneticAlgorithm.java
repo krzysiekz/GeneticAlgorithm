@@ -3,6 +3,8 @@ package com.krzysiekz.genetic;
 import com.krzysiekz.genetic.operation.CrossoverOperation;
 import com.krzysiekz.genetic.operation.MutationOperation;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,17 +27,30 @@ public class GeneticAlgorithm {
 
     public void apply(GenesToValueCalculator genesToValueCalculator,
                       GeneticAlgorithmOptions options,
-                      GeneticAlgorithmOperations operations) {
-
-        population.calculateFitnessForIndividuals(options.getFitnessFunction(), genesToValueCalculator);
-        for (int i = 0; i < options.getNumberOfGenerations(); i++) {
-            population = options.getSelectionAlgorithm().createNewPopulation(population);
-            performCrossover(options.getCrossoverProbability(), operations.getCrossoverOperation());
-            performMutation(operations.getMutationOperation(), options.getMutationProbability());
+                      GeneticAlgorithmOperations operations,
+                      String outputFileName) {
+        try (PrintWriter pw = new PrintWriter(outputFileName)) {
             population.calculateFitnessForIndividuals(options.getFitnessFunction(), genesToValueCalculator);
+            for (int i = 0; i < options.getNumberOfGenerations(); i++) {
+                population = options.getSelectionAlgorithm().createNewPopulation(population);
+                performCrossover(options.getCrossoverProbability(), operations.getCrossoverOperation());
+                performMutation(operations.getMutationOperation(), options.getMutationProbability());
+                population.calculateFitnessForIndividuals(options.getFitnessFunction(), genesToValueCalculator);
 
-            displayLogMessage(i, genesToValueCalculator);
+                displayLogMessage(i, genesToValueCalculator);
+                writeResultToFile(genesToValueCalculator, pw, i);
+            }
+        } catch (IOException e) {
+            Logger.getAnonymousLogger().
+                    severe(MessageFormat.format("Cannot save result to the file. {0}", e.getMessage()));
         }
+    }
+
+    private void writeResultToFile(GenesToValueCalculator genesToValueCalculator, PrintWriter pw, int i) {
+        Individual bestIndividual = population.getBestIndividual();
+        pw.printf("%d\t%f\t%f\t%f%n", i+1,
+                population.getTotalFitness() / population.getIndividuals().length,
+                bestIndividual.getFitness(), genesToValueCalculator.convert(bestIndividual));
     }
 
     private void displayLogMessage(int i, GenesToValueCalculator genesToValueCalculator) {
