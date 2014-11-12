@@ -48,13 +48,13 @@ public class Population {
         individuals[index] = individual;
     }
 
-    public double getBestFitness() {
-        double max = individuals[0].getFitness();
+    public Individual getBestIndividual() {
+        Individual bestIndividual = individuals[0];
         for (Individual individual : individuals) {
-            if(individual.getFitness() > max) {
-                max = individual.getFitness();
+            if(individual.getFitness() > bestIndividual.getFitness()) {
+                bestIndividual = individual;
             }
         }
-        return max;
+        return bestIndividual;
     }
 }

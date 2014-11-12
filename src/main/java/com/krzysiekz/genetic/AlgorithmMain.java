@@ -15,7 +15,7 @@ public class AlgorithmMain {
     public static final double MIN_RANGE = 0.5;
     public static final double MAX_RANGE = 2.5;
     public static final int PRECISION = 3;
-    public static final int NUMBER_OF_INDIVIDUALS = 50;
+    public static final int NUMBER_OF_INDIVIDUALS = 100;
 
     public static void main(String[] args) {
         GeneticAlgorithmOptions options = getGeneticAlgorithmOptions();

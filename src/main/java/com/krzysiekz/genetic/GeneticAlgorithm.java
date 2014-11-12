@@ -34,15 +34,16 @@ public class GeneticAlgorithm {
             performMutation(operations.getMutationOperation(), options.getMutationProbability());
             population.calculateFitnessForIndividuals(options.getFitnessFunction(), genesToValueCalculator);
 
-            displayLogMessage(i);
+            displayLogMessage(i, genesToValueCalculator);
         }
     }
 
-    private void displayLogMessage(int i) {
+    private void displayLogMessage(int i, GenesToValueCalculator genesToValueCalculator) {
+        Individual bestIndividual = population.getBestIndividual();
         Logger.getAnonymousLogger().info(MessageFormat.
-                format("Generation: {0}, average fitness: {1}, best fitness {2}",
+                format("Generation: {0}, average fitness: {1}, best fitness {2} for x: {3}",
                         i + 1, population.getTotalFitness() / population.getIndividuals().length,
-                        population.getBestFitness()));
+                        bestIndividual.getFitness(), genesToValueCalculator.convert(bestIndividual)));
     }
 
     private void performMutation(MutationOperation mutationOperation, Double mutationProbability) {

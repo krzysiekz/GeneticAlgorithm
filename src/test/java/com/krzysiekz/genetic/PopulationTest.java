@@ -94,14 +94,14 @@ public class PopulationTest {
     }
 
     @Test
-    public void shouldGetBestFitness() {
+    public void shouldGetBestIndividual() {
         //given
         when(individual.getFitness()).thenReturn(5.0);
         when(individualCreator.create()).thenReturn(individual);
         //when
         Population population = new Population(individualCreator, NUMBER_OF_INDIVIDUALS);
-        double bestFitness = population.getBestFitness();
+        Individual bestFitness = population.getBestIndividual();
         //then
-        assertThat(bestFitness).isEqualTo(5.0, offset(0.001));
+        assertThat(bestFitness.getFitness()).isEqualTo(5.0, offset(0.001));
     }
 }
