@@ -4,13 +4,27 @@ import com.krzysiekz.genetic.Individual;
 import com.krzysiekz.genetic.Population;
 import com.krzysiekz.genetic.selection.SelectionAlgorithm;
 
+/**
+ * The class that represents tournament selection algorithm.
+ */
 public class TournamentSelectionAlgorithm implements SelectionAlgorithm {
     private final int tournamentSize;
 
+    /**
+     * Instantiates a new tournament selection algorithm.
+     *
+     * @param tournamentSize the tournament size
+     */
     public TournamentSelectionAlgorithm(int tournamentSize) {
         this.tournamentSize = tournamentSize;
     }
 
+    /**
+     * Creates new population.
+     *
+     * @param population the population
+     * @return the population
+     */
     @Override
     public Population createNewPopulation(Population population) {
         Population newPopulation = new Population(population.getIndividuals().length);

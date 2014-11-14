@@ -4,6 +4,9 @@ import com.krzysiekz.genetic.GenesToValueCalculator;
 import com.krzysiekz.genetic.Individual;
 import com.krzysiekz.genetic.fitness.FitnessFunction;
 
+/**
+ * The Default fitness function.
+ */
 public class DefaultFitnessFunction implements FitnessFunction {
 
     @Override

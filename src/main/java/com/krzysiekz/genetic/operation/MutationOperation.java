@@ -4,6 +4,9 @@ import com.krzysiekz.genetic.Individual;
 
 import java.util.Random;
 
+/**
+ * The class that represents mutation operation.
+ */
 public class MutationOperation {
 
     private Random random;
@@ -16,6 +19,12 @@ public class MutationOperation {
         random = new Random();
     }
 
+    /**
+     * Applies mutation operation on given individual.
+     *
+     * @param individual the individual
+     * @param probabilityOfMutation the probability of mutation
+     */
     public void apply(Individual individual, double probabilityOfMutation) {
         byte[] genes = individual.getGenes();
         for (int i = 0; i < genes.length; i++) {

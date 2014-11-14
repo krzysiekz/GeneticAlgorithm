@@ -7,11 +7,20 @@ import com.krzysiekz.genetic.selection.SelectionAlgorithm;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The class that represents roulette selection algorithm.
+ */
 public class RouletteSelectionAlgorithm implements SelectionAlgorithm {
 
     private final Map<Integer, Double> individualsProbability = new HashMap<>();
     private final Map<Integer, Double> individualsDistribution = new HashMap<>();
 
+    /**
+     * Creates new population.
+     *
+     * @param population the population
+     * @return the population
+     */
     @Override
     public Population createNewPopulation(Population population) {
         calculateProbabilities(population);

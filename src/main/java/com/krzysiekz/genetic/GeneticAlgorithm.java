@@ -11,20 +11,31 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 
+/**
+ * The class that represents genetic algorithm.
+ */
 public class GeneticAlgorithm {
     private Population population;
     private Random random;
 
-    public GeneticAlgorithm(Population population, long seed) {
-        this.population = population;
-        random = new Random(seed);
-    }
-
+    /**
+     * Instantiates a new genetic algorithm.
+     *
+     * @param population the population
+     */
     public GeneticAlgorithm(Population population) {
         this.population = population;
         random = new Random();
     }
 
+    /**
+     * Applies genetic algorithm on population.
+     *
+     * @param genesToValueCalculator the genes to value calculator
+     * @param options the genetic algorithm options
+     * @param operations the genetic algorithm operations
+     * @param outputFileName the output file name
+     */
     public void apply(GenesToValueCalculator genesToValueCalculator,
                       GeneticAlgorithmOptions options,
                       GeneticAlgorithmOperations operations,

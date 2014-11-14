@@ -2,15 +2,30 @@ package com.krzysiekz.genetic;
 
 import java.math.BigInteger;
 
+/**
+ * The class converts individuals genes into value within given range.
+ */
 public class GenesToValueCalculator {
     private final double minRange;
     private final double maxRange;
 
+    /**
+     * Instantiates a new Genes to value calculator.
+     *
+     * @param minRange the min range
+     * @param maxRange the max range
+     */
     public GenesToValueCalculator(double minRange, double maxRange) {
         this.minRange = minRange;
         this.maxRange = maxRange;
     }
 
+    /**
+     * Converts double.genes to value.
+     *
+     * @param individual the individual
+     * @return the genes value.
+     */
     public Double convert(Individual individual) {
         return calculateGenesValue(individual);
     }
